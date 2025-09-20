@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/popover";
 import UserMenu from "@/components/user-menu";
 import { ThemeToggle } from "./theme-toggle";
+import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -141,7 +142,7 @@ export default function Navbar() {
         </NavigationMenu>
         {/* Right side */}
         <div className="flex flex-1 items-center justify-end gap-4">
-          <ThemeToggle />
+          <AnimatedThemeToggler />
           <div className="flex items-center gap-2">
             {/* Messages */}
             <Button
