@@ -1,14 +1,6 @@
-import {
-  HashIcon,
-  HouseIcon,
-  MailIcon,
-  SearchIcon,
-  UsersRound,
-} from "lucide-react";
+import { AsteriskIcon, BookIcon, HomeIcon, SearchIcon } from "lucide-react";
 import Link from "next/link";
-import { useId } from "react";
 import Logo from "@/components/logo";
-import NotificationMenu from "@/components/notification-menu";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -22,20 +14,20 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import UserMenu from "@/components/user-menu";
-import { ThemeToggle } from "./theme-toggle";
 import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "#", label: "Home", icon: HouseIcon },
-  { href: "#", label: "Hash", icon: HashIcon },
-  { href: "#", label: "Groups", icon: UsersRound },
+  { href: "/", label: "Home", icon: HomeIcon },
+  { href: "/dnd/rules", label: "Regras", icon: BookIcon },
+  {
+    href: "/dnd/quick-references",
+    label: "Referencias Rápidas",
+    icon: AsteriskIcon,
+  },
 ];
 
 export default function Navbar() {
-  const id = useId();
-
   return (
     <header className="border-b px-4 md:px-6">
       <div className="flex h-16 items-center justify-between gap-4">
@@ -109,7 +101,6 @@ export default function Navbar() {
             {/* Search form */}
             <div className="relative">
               <Input
-                id={id}
                 className="peer h-8 ps-8 pe-2"
                 placeholder="Search..."
                 type="search"
@@ -143,25 +134,6 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex flex-1 items-center justify-end gap-4">
           <AnimatedThemeToggler />
-          <div className="flex items-center gap-2">
-            {/* Messages */}
-            <Button
-              size="icon"
-              variant="ghost"
-              className="text-muted-foreground relative size-8 rounded-full shadow-none"
-              aria-label="Open notifications"
-            >
-              <MailIcon size={16} aria-hidden="true" />
-              <div
-                aria-hidden="true"
-                className="bg-primary absolute top-0.5 right-0.5 size-1 rounded-full"
-              />
-            </Button>
-            {/* Notification menu */}
-            <NotificationMenu />
-          </div>
-          {/* User menu */}
-          <UserMenu />
         </div>
       </div>
     </header>
