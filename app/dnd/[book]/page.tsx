@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import BookViewer from "@/components/book-viewer";
 import Books from "@/data/books.json";
 
 const BooksPage = ({ params }: { params: { book: string } }) => {
@@ -12,7 +14,9 @@ const BooksPage = ({ params }: { params: { book: string } }) => {
 
   return (
     <div>
-      <pre>{JSON.stringify(book, null, 2)}</pre>
+      <Suspense>
+        <BookViewer book={book} />
+      </Suspense>
     </div>
   );
 };
